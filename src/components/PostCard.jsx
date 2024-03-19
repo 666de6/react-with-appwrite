@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import appwriteService from '../appwrite/service';
+import appwriteService from '../appwrite/blogService';
 
 function PostCard({
   $id,

@@ -1,17 +1,12 @@
-/*
- * @Author: Ada J
- * @Date: 2024-02-29 11:06:30
- * @LastEditTime: 2024-03-02 11:54:25
- * @Description: 
- */
-import React from 'react';
+import React from 'react'
+import {Login as LoginComponent} from "../components/index"
 
-function Login(props) {
+function Login() {
   return (
-    <div>
-      login    
+    <div className='py-8'>
+      <LoginComponent />
     </div>
-  );
+  )
 }
 
-export default Login;
+export default Login

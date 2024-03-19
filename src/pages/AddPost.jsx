@@ -1,17 +1,15 @@
-/*
- * @Author: Ada J
- * @Date: 2024-02-29 11:06:30
- * @LastEditTime: 2024-03-02 11:53:20
- * @Description: 
- */
 import React from 'react';
+import PostForm from '../components/post-form/PostForm';
+import { Container } from '../components';
 
-function AddPost(props) {
+function AddPost() {
   return (
-    <div>
-      AddPost
+    <div className='py-6'>
+      <Container>
+        <PostForm />
+      </Container>
     </div>
-  );
+  )
 }
 
-export default AddPost;
+export default AddPost

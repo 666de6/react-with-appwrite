@@ -4,7 +4,7 @@ import Button from "../Button"
 import Input from "../Input"
 import RTE from "../RTE"
 import Select from "../Select"
-import appwriteSerice from "../../appwrite/config"
+import appwriteSerice from "../../appwrite/blogService"
 import {useSelector } from "react-redux"
 import {useNavigate} from "react-router-dom"
 

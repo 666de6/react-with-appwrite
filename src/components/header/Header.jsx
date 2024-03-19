@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../Logo';
-import Logout from './Logout';
+import { Container, Logout } from '@/components';
 import { useSelector } from "react-redux";
 import {Link, useNavigate} from 'react-router-dom';
 
@@ -46,14 +46,16 @@ function Header() {
           </div>          
           <ul className='flex ml-auto'>
             {
-              navItems.map(nav => (
-                <Link to={nav.slug}>
-                  <li
-                  key={nav.name}
-                  className={`inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full ${nav.active ? 'text-yellow-500' : ''}`}
-                  >{nav.name}</li>        
-                </Link>
-              ))
+              navItems.map(navItem => navItem.active ? (
+                <li
+                  key={navItem.slug}
+                  className={`inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full text-yellow-500`}
+                  >
+                  <Link to={navItem.slug}>
+                    {navItem.name}
+                  </Link>
+                </li>        
+              ) : null)
             }
             {authStatus && (
               <li>
