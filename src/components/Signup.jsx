@@ -21,7 +21,7 @@ function Signup(props) {
       if(session){
         const userInfo = await authService.getCurrentUser();
         userInfo && dispatch(login({userData: userInfo}));
-        // navigate('/'); 
+        navigate('/'); 
       }
 
     } catch (error) {

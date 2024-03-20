@@ -14,7 +14,6 @@ function Login(props) {
   const [error, setError] = useState('');
 
   const login = async (data) => {
-    console.log(1111111)
     try {
         setError('');
         const logedIn = await authService.login(data);

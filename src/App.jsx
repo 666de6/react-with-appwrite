@@ -7,18 +7,21 @@ import {Header, Footer, Logo} from '@/components';
 import authService from './appwrite/auth';
 
 function App() {
-  // const [loading, setLoading] = useState(true);
-  // const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     authService
-    //         .getCurrentUser()
-    //         .then((userData) => {
-    //             if (userData) dispatch(login({ userData }));
-    //             else dispatch(logout());
-    //         })
-    //         .finally(() => setLoading(false));
-    // }, [dispatch]);
+    useEffect(() => {
+        authService
+            .getCurrentUser()
+            .then((userData) => {
+                if (userData) dispatch(login({ userData }));
+                else dispatch(logout());
+            })
+            .catch(err => {
+              dispatch(logout()); 
+            })
+            .finally(() => setLoading(false));
+    }, [dispatch]);
 
     return (
       <div className="min-h-screen flex flex-wrap content-between">

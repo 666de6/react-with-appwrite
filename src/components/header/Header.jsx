@@ -2,11 +2,11 @@ import React from 'react';
 import Logo from '../Logo';
 import { Container, Logout } from '@/components';
 import { useSelector } from "react-redux";
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useNavigate, useLocation} from 'react-router-dom';
 
 function Header() {
-  const authStatus = useSelector(state => state.auth.status);
-  const navigate = useNavigate();
+  const authStatus = useSelector(state => state.auth.status) || JSON.parse(sessionStorage.getItem('logedIn')) || false;;
+  // const navigate = useNavigate();
   const navItems = [
     {
         name: "Home",
@@ -34,7 +34,8 @@ function Header() {
         active: authStatus
     }
   ]
-  
+  const {pathname} = useLocation();
+  console.log({pathname})
   return (
     <header>
       <Container>
@@ -49,7 +50,7 @@ function Header() {
               navItems.map(navItem => navItem.active ? (
                 <li
                   key={navItem.slug}
-                  className={`inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full text-yellow-500`}
+                  className={`inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full ${pathname === navItem.slug ? 'text-white' : 'text-yellow-500'}`}
                   >
                   <Link to={navItem.slug}>
                     {navItem.name}

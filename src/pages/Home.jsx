@@ -9,11 +9,10 @@ function Home() {
   const [posts, setPosts] = useState([])
   const userInfo = useSelector(state => state.auth.userData);
   const navigate = useNavigate();
-  console.log({userInfo})
   
   useEffect(() => {
-    if(userInfo === null) navigate('/login');
-    appwriteService.getPosts([]).then((posts) => {
+    if(!JSON.parse(sessionStorage.getItem('logedIn'))) navigate('/login');
+    appwriteService.getPosts().then((posts) => {
       if (posts) {
         setPosts(posts.documents)
       }
@@ -26,7 +25,7 @@ function Home() {
       <Container>
         <div className="w-full my-2">
           <Link to='/add-post'>
-            You haven't post anything?
+            There is no active post?
             <h1>Go to create a new post</h1>
           </Link>
         </div>
